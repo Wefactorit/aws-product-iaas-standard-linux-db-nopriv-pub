@@ -1,0 +1,17 @@
+image_id         = "ami-04afd8ba4f71edacd"
+instance_type    = "t2.medium"
+vpc_cidr         = "10.9.16.0/21"
+azs              = ["eu-west-3a", "eu-west-3b"]
+public_subnets   = ["10.9.16.0/24", "10.9.20.0/24"]
+private_subnets  = ["10.9.17.0/24", "10.9.21.0/24"]
+database_subnets = ["10.9.19.0/24", "10.9.23.0/24"]
+redshift_subnets = ["10.9.18.0/24", "10.9.22.0/24"]
+application      = "gen"
+env              = "prd"
+region_trigram   = "ew3"
+rds_role_arn     = "arn:aws:iam::614807585995:role/OrganizationAccountAccessRole"
+alb_frontend_port    = 80
+alb_backend_port     = 10000
+nlb_frontend_port    = 22
+nlb_backend_port     = 22
+region               = "eu-west-3"
