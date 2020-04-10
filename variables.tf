@@ -8,13 +8,13 @@ variable "prefix" {
 
 variable "region_trigram" {
   description = "The region trigram to build pattern"
-  default = ""
+  default     = ""
 }
 
 
 variable "region" {
   description = "The region name"
-  default = ""
+  default     = ""
 }
 
 
@@ -84,440 +84,35 @@ variable "application" {
 
 ## Account ID
 ###Project main Configuration#####
-variable "account_id" {
-  description = "The AWS account ID"
-  type        = string
-  default     = "arn:aws:iam::936645143561:role/OrganizationAccountAccessRole"
-}
+
 
 #ALB
 
 variable "alb_frontend_port" {
   description = "The listener frontend port"
-  type = number
+  type        = number
 }
 
 variable "alb_backend_port" {
   description = "The backend port"
-  type = number
+  type        = number
 }
 
 #NLB
 
 variable "nlb_frontend_port" {
   description = "The listener frontend port"
-  type = number
+  type        = number
 }
 
 variable "nlb_backend_port" {
   description = "The backend port"
-  type = number
-}
-
-
-
-##########
-# Ingress
-##########
-variable "ingress_rules" {
-  description = "List of ingress rules to create by name"
-  type        = list(string)
-  default     = []
-}
-
-variable "ingress_with_self" {
-  description = "List of ingress rules to create where 'self' is defined"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "ingress_with_cidr_blocks" {
-  description = "List of ingress rules to create where 'cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "ingress_with_ipv6_cidr_blocks" {
-  description = "List of ingress rules to create where 'ipv6_cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "ingress_with_source_security_group_id" {
-  description = "List of ingress rules to create where 'source_security_group_id' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "ingress_cidr_blocks" {
-  description = "List of IPv4 CIDR ranges to use on all ingress rules"
-  type        = list(string)
-  default = [
-  "0.0.0.0/0"]
-}
-
-variable "ingress_ipv6_cidr_blocks" {
-  description = "List of IPv6 CIDR ranges to use on all ingress rules"
-  type        = list(string)
-  default     = []
-}
-
-variable "ingress_prefix_list_ids" {
-  description = "List of prefix list IDs (for allowing access to VPC endpoints) to use on all ingress rules"
-  type        = list(string)
-  default     = []
-}
-
-###################
-# Computed Ingress
-###################
-variable "computed_ingress_rules" {
-  description = "List of computed ingress rules to create by name"
-  type        = list(string)
-  default     = []
-}
-
-variable "computed_ingress_with_self" {
-  description = "List of computed ingress rules to create where 'self' is defined"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_ingress_with_cidr_blocks" {
-  description = "List of computed ingress rules to create where 'cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_ingress_with_ipv6_cidr_blocks" {
-  description = "List of computed ingress rules to create where 'ipv6_cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_ingress_with_source_security_group_id" {
-  description = "List of computed ingress rules to create where 'source_security_group_id' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_ingress_cidr_blocks" {
-  description = "List of IPv4 CIDR ranges to use on all computed ingress rules"
-  type        = list(string)
-  default     = []
-}
-
-variable "computed_ingress_ipv6_cidr_blocks" {
-  description = "List of IPv6 CIDR ranges to use on all computed ingress rules"
-  type        = list(string)
-  default     = []
-}
-
-variable "computed_ingress_prefix_list_ids" {
-  description = "List of prefix list IDs (for allowing access to VPC endpoints) to use on all computed ingress rules"
-  type        = list(string)
-  default     = []
-}
-
-###################################
-# Number of computed ingress rules
-###################################
-variable "number_of_computed_ingress_rules" {
-  description = "Number of computed ingress rules to create by name"
   type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_with_self" {
-  description = "Number of computed ingress rules to create where 'self' is defined"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_with_cidr_blocks" {
-  description = "Number of computed ingress rules to create where 'cidr_blocks' is used"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_with_ipv6_cidr_blocks" {
-  description = "Number of computed ingress rules to create where 'ipv6_cidr_blocks' is used"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_with_source_security_group_id" {
-  description = "Number of computed ingress rules to create where 'source_security_group_id' is used"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_cidr_blocks" {
-  description = "Number of IPv4 CIDR ranges to use on all computed ingress rules"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_ipv6_cidr_blocks" {
-  description = "Number of IPv6 CIDR ranges to use on all computed ingress rules"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_ingress_prefix_list_ids" {
-  description = "Number of prefix list IDs (for allowing access to VPC endpoints) to use on all computed ingress rules"
-  type        = number
-  default     = 0
-}
-
-#########
-# Egress
-#########
-variable "egress_rules" {
-  description = "List of egress rules to create by name"
-  type        = list(string)
-  default     = []
-}
-
-variable "egress_with_self" {
-  description = "List of egress rules to create where 'self' is defined"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "egress_with_cidr_blocks" {
-  description = "List of egress rules to create where 'cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "egress_with_ipv6_cidr_blocks" {
-  description = "List of egress rules to create where 'ipv6_cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "egress_with_source_security_group_id" {
-  description = "List of egress rules to create where 'source_security_group_id' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "egress_cidr_blocks" {
-  description = "List of IPv4 CIDR ranges to use on all egress rules"
-  type        = list(string)
-  default = [
-  "0.0.0.0/0"]
-}
-
-variable "egress_ipv6_cidr_blocks" {
-  description = "List of IPv6 CIDR ranges to use on all egress rules"
-  type        = list(string)
-  default = [
-  "::/0"]
-}
-
-variable "egress_prefix_list_ids" {
-  description = "List of prefix list IDs (for allowing access to VPC endpoints) to use on all egress rules"
-  type        = list(string)
-  default     = []
-}
-
-##################
-# Computed Egress
-##################
-variable "computed_egress_rules" {
-  description = "List of computed egress rules to create by name"
-  type        = list(string)
-  default     = []
-}
-
-variable "computed_egress_with_self" {
-  description = "List of computed egress rules to create where 'self' is defined"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_egress_with_cidr_blocks" {
-  description = "List of computed egress rules to create where 'cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_egress_with_ipv6_cidr_blocks" {
-  description = "List of computed egress rules to create where 'ipv6_cidr_blocks' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_egress_with_source_security_group_id" {
-  description = "List of computed egress rules to create where 'source_security_group_id' is used"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "computed_egress_cidr_blocks" {
-  description = "List of IPv4 CIDR ranges to use on all computed egress rules"
-  type        = list(string)
-  default = [
-  "0.0.0.0/0"]
-}
-
-variable "computed_egress_ipv6_cidr_blocks" {
-  description = "List of IPv6 CIDR ranges to use on all computed egress rules"
-  type        = list(string)
-  default = [
-  "::/0"]
-}
-
-variable "computed_egress_prefix_list_ids" {
-  description = "List of prefix list IDs (for allowing access to VPC endpoints) to use on all computed egress rules"
-  type        = list(string)
-  default     = []
-}
-
-##################################
-# Number of computed egress rules
-##################################
-variable "number_of_computed_egress_rules" {
-  description = "Number of computed egress rules to create by name"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_with_self" {
-  description = "Number of computed egress rules to create where 'self' is defined"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_with_cidr_blocks" {
-  description = "Number of computed egress rules to create where 'cidr_blocks' is used"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_with_ipv6_cidr_blocks" {
-  description = "Number of computed egress rules to create where 'ipv6_cidr_blocks' is used"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_with_source_security_group_id" {
-  description = "Number of computed egress rules to create where 'source_security_group_id' is used"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_cidr_blocks" {
-  description = "Number of IPv4 CIDR ranges to use on all computed egress rules"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_ipv6_cidr_blocks" {
-  description = "Number of IPv6 CIDR ranges to use on all computed egress rules"
-  type        = number
-  default     = 0
-}
-
-variable "number_of_computed_egress_prefix_list_ids" {
-  description = "Number of prefix list IDs (for allowing access to VPC endpoints) to use on all computed egress rules"
-  type        = number
-  default     = 0
 }
 
 
-# This file was generated from defaults defined in rules.tf using update_groups.sh.
-###################################
-# DO NOT CHANGE THIS FILE MANUALLY
-###################################
-
-variable "auto_ingress_rules" {
-  description = "List of ingress rules to add automatically"
-  type        = list(string)
-  default = [
-  "http-80-tcp"]
-}
-
-variable "auto_ingress_with_self" {
-  description = "List of maps defining ingress rules with self to add automatically"
-  type        = list(map(string))
-  default = [
-    {
-      "rule" = "all-all"
-  }]
-}
-
-variable "auto_egress_rules" {
-  description = "List of egress rules to add automatically"
-  type        = list(string)
-  default = [
-  "all-all"]
-}
-
-variable "auto_egress_with_self" {
-  description = "List of maps defining egress rules with self to add automatically"
-  type        = list(map(string))
-  default     = []
-}
-
-# Computed
-variable "auto_computed_ingress_rules" {
-  description = "List of ingress rules to add automatically"
-  type        = list(string)
-  default     = []
-}
-
-variable "auto_computed_ingress_with_self" {
-  description = "List of maps defining computed ingress rules with self to add automatically"
-  type        = list(map(string))
-  default     = []
-}
-
-variable "auto_computed_egress_rules" {
-  description = "List of computed egress rules to add automatically"
-  type        = list(string)
-  default     = []
-}
-
-variable "auto_computed_egress_with_self" {
-  description = "List of maps defining computed egress rules with self to add automatically"
-  type        = list(map(string))
-  default     = []
-}
-
-# Number of computed rules
-variable "auto_number_of_computed_ingress_rules" {
-  description = "Number of computed ingress rules to create by name"
-  type        = number
-  default     = 0
-}
-
-variable "auto_number_of_computed_ingress_with_self" {
-  description = "Number of computed ingress rules to create where 'self' is defined"
-  type        = number
-  default     = 0
-}
-
-variable "auto_number_of_computed_egress_rules" {
-  description = "Number of computed egress rules to create by name"
-  type        = number
-  default     = 0
-}
-
-variable "auto_number_of_computed_egress_with_self" {
-  description = "Number of computed egress rules to create where 'self' is defined"
-  type        = number
-  default     = 0
-}
 
 
-variable "route53_parent_zone_id" {
-  description = "The zone parent id"
-  type        = string
-  default     = "Z2XSZKH40EWJQ9"
-}
 
 ############ RDS CONFIGURATION ######################
 
@@ -555,12 +150,12 @@ variable "rds_backup_retention_period" {
 variable "rds_identifier" {
   description = "The RDS identifiers"
   type        = string
-  default     = "dataiku-db-ha"
+  default     = "db-ha"
 }
 variable "database_name" {
   description = "The postgres RDS database name"
   type        = string
-  default     = "dataiku"
+  default     = "rdsinstance"
 }
 
 variable "database_username" {
@@ -631,7 +226,7 @@ variable "rds_major_version" {
 variable "asg_name" {
   description = "Auto scale group name"
   type        = string
-  default     = "emobg-gbi-cicd-dev-ew3-pri-asg"
+  default     = "asg-name"
 }
 
 
@@ -662,7 +257,7 @@ variable "min_size" {
 variable "rds_monioring_role" {
   description = "The RDS monitoring role"
   type        = string
-  default     = "DataikuRDSMonitoringRole"
+  default     = "RDSMonitoringRole"
 }
 
 
@@ -673,13 +268,6 @@ variable "rds_monitoring_interval" {
 }
 
 
-##### ROUTE 53 ###########
-
-variable "hosted_zone_name" {
-  description = "The hosted zone name"
-  type        = string
-  default     = "dev.dataiku.emobg.io"
-}
 
 ##REDSHIFT
 variable "redshift_user_name" {
@@ -704,7 +292,7 @@ variable "redshift_node_type" {
 variable "redshift_cluster_identifier" {
   description = "The redshift identifier"
   type        = string
-  default     = "dataiku-redshift-cluster"
+  default     = "redshift-cluster"
 }
 
 
@@ -712,4 +300,23 @@ variable "redshift_cluster_node_number" {
   description = "The nomber of node"
   type        = number
   default     = 1
+}
+
+
+######## security group ##############
+
+
+variable "auto_ingress_rules" {
+  description = "List of ingress rules to add automatically"
+  type        = list(string)
+  default     = ["http-80-tcp"]
+}
+
+
+
+
+variable "ingress_rules" {
+  description = "List of ingress rules to create by name"
+  type        = list(string)
+  default     = []
 }
