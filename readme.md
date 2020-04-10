@@ -6,7 +6,7 @@ All variables are in prd.tfvars , fell free to modify these variables to match y
 
 ## Schema
 
-![alt text](images/nfrastructure-catalog_images_aws-product-iaas-standard-linux-db-nopriv-pub.png "Schema")
+![image info](images/nfrastructure-catalog_images_aws-product-iaas-standard-linux-db-nopriv-pub.png "Schema")
 
 
 
