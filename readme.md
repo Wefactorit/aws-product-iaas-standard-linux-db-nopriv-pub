@@ -4,6 +4,12 @@ This Terraform stack will help you to build a generic Public facing pattern with
 All variables are in prd.tfvars , fell free to modify these variables to match your needs. Make sure you change the role into the main.tf file by the role you are using.
 
 
+## Schema
+
+![alt text](images/nfrastructure-catalog_images_aws-product-iaas-standard-linux-db-nopriv-pub.png "Schema")
+
+
+
 ## Usage
 
 To try this stack just initialize your project
