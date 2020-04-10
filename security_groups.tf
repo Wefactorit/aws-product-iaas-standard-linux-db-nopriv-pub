@@ -2,7 +2,7 @@ module "ssh_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "3.4"
 
-  name                = "emobg-gbi-${var.application}-${var.env}-${var.region_trigram}-ssh-sg"
+  name                = "${var.prefix}-gbi-${var.application}-${var.env}-${var.region_trigram}-ssh-sg"
   description         = "Security group for ssh access"
   vpc_id              = module.vpc.vpc_id
   ingress_cidr_blocks = sort(compact(distinct(concat(var.auto_ingress_rules, var.ingress_rules, [""]))))
