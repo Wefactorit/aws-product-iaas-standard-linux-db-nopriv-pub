@@ -1,7 +1,21 @@
 # Generic public stack
 
 This Terraform stack will help you to build a generic Public facing pattern with a RDS instance or a REDSHIFT instance.
-All variables are in prd.tfvars , fell free to modify these variables to match your needs.
+All variables are in prd.tfvars , fell free to modify these variables to match your needs. Make sure you change the role into the main.tf file by the role you are using.
+
+
+## Usage
+
+To try this stack just initialize your project
+
+```
+terraform init
+```
+And then you can run terraform plan this way
+
+```
+terraform plan   -var-file="prd.tfvars"
+```
 
 
 ## Providers
