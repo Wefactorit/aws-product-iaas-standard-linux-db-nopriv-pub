@@ -23,4 +23,5 @@ apply:
       refs:
         - merge_requests
         - master
+    when: manual    
     allow_failure: false
