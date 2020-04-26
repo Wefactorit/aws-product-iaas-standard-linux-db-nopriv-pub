@@ -1,52 +1,27 @@
-stages:
-    - validate
-    - plan
-    - apply
-
-.enable_ssh: &enable_ssh
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - mkdir -p ~/.ssh
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-  - chmod 400 ~/.ssh/id_rsa
-  - eval "$(ssh-agent -s)"
-  - ssh-add ~/.ssh/id_rsa
-  - ssh-keyscan -H 'github.com' >> ~/.ssh/known_hosts
-
-
-before_script:
-    - *enable_ssh
-    - terraform --version
-    - terraform init
-
-.terraform:
-    image:
-      name: hashicorp/terraform:0.12.20
-      entrypoint:
-        - ""
+include:
+   - local: .gitlab/.gitlab-cloud-template.yml
 
 validate:
     stage: validate
-    extends: .terraform
     script:
       - terraform validate
 
 plan:
     stage: plan
-    extends: .terraform
+    dependencies:
+      - validate    
     script:
       - terraform plan
-    dependencies:
-      - "validate"
 
 apply:
     stage: apply
-    extends: .terraform
+    dependencies:
+      - plan    
     script:
       - terraform apply
-    dependencies:
-      - "validate"
-      - "plan"
     only:
       refs:
         - merge_requests
         - master
+    when: manual    
+    allow_failure: false

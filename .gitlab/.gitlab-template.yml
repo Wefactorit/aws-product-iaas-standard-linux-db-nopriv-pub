@@ -1,0 +1,27 @@
+# default stages which are used into pipeline jobs
+stages:
+    - validate
+    - plan
+    - apply
+
+# enable_ssh tasks
+.enable_ssh: &enable_ssh
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 400 ~/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan -H 'github.com' >> ~/.ssh/known_hosts
+
+# Default image which is used for all stages/jobs
+image:
+  name: hashicorp/terraform:0.12.20
+  entrypoint: ""
+
+# Default before_script tasks
+before_script:
+    - *enable_ssh
+    - terraform --version
+    - terraform init
+
